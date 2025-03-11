@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const authSchema = new mongoose.Schema(
   {
-    userName: {
+    CompanyName: {
       type: String,
       required: true,
     },

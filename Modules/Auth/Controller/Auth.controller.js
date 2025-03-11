@@ -5,7 +5,7 @@ const users = require("../../../DB/models/Auth.model");
 
 const Register =  async (req, res) => {
     try {
-      const { userName, email, password, role } = req.body;
+      const { CompanyName, email, password, role } = req.body;
       const emailExists = await users.findOne({email});
       if(emailExists){
           return res.status(400).json({message : "Email already in use"});
@@ -13,7 +13,7 @@ const Register =  async (req, res) => {
       if(password.length < 6){
           return res.status(400).json({message : "Password must be at least 6 characters"});
       }
-      users.create({ userName, email, password, role });
+      users.create({ CompanyName, email, password, role });
       return res.status(201).json({ message: "User created successfully", user: req.body });
     } catch (err) {
       return res.status(401).json({message: "User not successful created", err: err.message});
